@@ -144,14 +144,15 @@
                 <option value="5"> 5 (Strongly Agree)</option>
             </select>
 
-            <button class="btn waves-effect waves-light modal-trigger" type="submit" name="action" href="#modal1">Submit
+            <button class="btn waves-effect waves-light modal-trigger s12" type="submit" name="action" href="#modal1">Submit
                     <i class="material-icons right">send</i>
                   </button>
                         
 
         </div>
 
-        <a href="home.html">home</a>
+        <a href="home.html" class="waves-effect waves-light btn"><i class="material-icons left">home</i></a>
+       
 
 
 
@@ -220,7 +221,7 @@
       // If all required fields are filled
       if (validateForm()) {
         // Create an object for the user"s data
-        var userData = {
+        var newFriendData = {
           name: $("#name").val(),
           photo: $("#photo").val(),
           scores: [
@@ -237,8 +238,10 @@
           ]
         };
 
+        console.log(newFriendData)
+
         // AJAX post the data to the friends API.
-        $.post("/api/friends", userData, function(data) {
+        $.post("/api/friends", newFriendData, function(data) {
 
           // Grab the result from the AJAX post so that the best match's name and photo are displayed.
           $("#match-name").text(data.name);
